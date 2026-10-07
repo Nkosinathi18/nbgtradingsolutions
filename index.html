@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="N B and G Trading Solutions - Vending machine solutions for hospitals, gyms, corporate offices, retail stores and other high-traffic locations in South Africa.">
+  <title>N B and G Trading Solutions | Vending Solutions</title>
+  <style>
+    :root {
+      --primary: #123b5d;
+      --secondary: #18a67a;
+      --dark: #10202f;
+      --light: #f5f8fa;
+      --white: #ffffff;
+      --text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* Navigation */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #123b5d 0%, #176b6b 100%);
+      color: white;
+      padding: 100px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #70e0b7;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin-bottom: 30px;
+      color: #e8f4f4;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #128763;
+    }
+
+    .btn-outline {
+      border-color: white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Sections */
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about h2 {
+      color: var(--dark);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      margin-bottom: 15px;
+    }
+
+    .highlight-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-left: 5px solid var(--secondary);
+    }
+
+    .highlight-box h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px 22px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    /* Products */
+    .products {
+      background: var(--light);
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .product h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    /* Partnership */
+    .partner {
+      background: var(--primary);
+      color: white;
+    }
+
+    .partner .section-title h2 {
+      color: white;
+    }
+
+    .partner .section-title p {
+      color: #dbe9ef;
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .partner-card {
+      padding: 25px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+    }
+
+    .partner-card h3 {
+      margin-bottom: 10px;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+    }
+
+    .contact-info h2 {
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      margin: 18px 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 3px;
+    }
+
+    form {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 17px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      padding: 25px 0;
+      text-align: center;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-list,
+      .partner-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+      }
+
+      nav.open {
+        display: block;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px 0 5px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo">N B and G <span>Trading Solutions</span></a>
+
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#partner">Partner With Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <h1>Convenient Vending Solutions for <span>Busy People</span></h1>
+        <p>
+          N B and G Trading Solutions provides convenient, accessible and reliable
+          vending machine solutions for hospitals, gyms, corporate offices, retail
+          locations and other high-traffic environments.
+        </p>
+
+        <div class="buttons">
+          <a href="#partner" class="btn btn-primary">Partner With Us</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2>About N B and G Trading Solutions</h2>
+          <p>
+            We are building a vending solutions business focused on making everyday
+            refreshments and convenient products easily available where people work,
+            exercise, receive healthcare and shop.
+          </p>
+          <p>
+            Our goal is to install and manage vending machines in suitable locations
+            while providing customers with a simple, convenient and reliable buying
+            experience.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>Our Mission</h3>
+          <p>
+            To provide convenient vending solutions that add value to businesses,
+            property owners and their customers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="locations">
+      <div class="container">
+        <div class="section-title">
+          <h2>Where We Operate</h2>
+          <p>
+            We are looking to partner with organisations and businesses that have
+            regular foot traffic and can benefit from on-site vending.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">🏥</div>
+            <h3>Hospitals</h3>
+            <p>Convenient refreshments for patients, visitors and healthcare staff.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🏋️</div>
+            <h3>Gyms</h3>
+            <p>Convenient drinks and snacks for members before or after workouts.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🏢</div>
+            <h3>Corporate Offices</h3>
+            <p>Easy access to refreshments for employees and visitors.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🛒</div>
+            <h3>Retail</h3>
+            <p>Additional convenience for customers in busy retail environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>What We Can Offer</h2>
+          <p>
+            Our vending machines can be configured according to the needs of each location.
+          </p>
+        </div>
+
+        <div class="product-list">
+          <div class="product">
+            <h3>Cold Drinks</h3>
+            <p>Soft drinks, water, energy drinks and other chilled beverages.</p>
+          </div>
+
+          <div class="product">
+            <h3>Snacks</h3>
+            <p>Chips, chocolates, sweets, biscuits and other convenient snacks.</p>
+          </div>
+
+          <div class="product">
+            <h3>Healthy Options</h3>
+            <p>Water, healthier snacks and selected products based on customer demand.</p>
+          </div>
+
+          <div class="product">
+            <h3>Hot Beverages</h3>
+            <p>Potential coffee, tea and other hot beverage vending solutions.</p>
+          </div>
+
+          <div class="product">
+            <h3>Location-Specific Products</h3>
+            <p>Product selections can be tailored to the needs of each partner location.</p>
+          </div>
+
+          <div class="product">
+            <h3>Cashless Payments</h3>
+            <p>Payment options can be configured to support convenient modern purchasing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partner" id="partner">
+      <div class="container">
+        <div class="section-title">
+          <h2>Partner With N B and G Trading Solutions</h2>
+          <p>
+            Do you manage a hospital, gym, office, retail store or another
+            high-traffic location? Let's discuss a vending solution for your premises.
+          </p>
+        </div>
+
+        <div class="partner-grid">
+          <div class="partner-card">
+            <h3>For Property Owners</h3>
+            <p>
+              Add a convenient service for tenants, visitors, employees and customers.
+            </p>
+          </div>
+
+          <div class="partner-card">
+            <h3>For Businesses</h3>
+            <p>
+              Give people on your premises convenient access to refreshments and snacks.
+            </p>
+          </div>
+
+          <div class="partner-card">
+            <h3>Simple Partnership</h3>
+            <p>
+              Contact us to discuss your location, available space and vending requirements.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:35px;">
+          <a href="#contact" class="btn btn-primary">Request a Vending Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+          <h2>Let's Work Together</h2>
+          <p>
+            If you are interested in having a vending machine at your business or
+            organisation, contact N B and G Trading Solutions.
+          </p>
+
+          <!-- Replace the details below with your real business information. -->
+          <div class="contact-item">
+            <strong>Phone / WhatsApp</strong>
+            <span>+27677579671</span>
+          </div>
+
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>nkosinathimthembu18@gmail.com</span>
+          </div>
+
+          <div class="contact-item">
+            <strong>Service Area</strong>
+            <span>Gauteng, South Africa</span>
+          </div>
+        </div>
+
+        <form onsubmit="sendEnquiry(event)">
+          <h3 style="color:#123b5d; margin-bottom:20px;">Vending Enquiry</h3>
+
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+
+          <label for="business">Business / Organisation</label>
+          <input type="text" id="business" required>
+
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="e.g. Johannesburg, Gauteng" required>
+
+          <label for="type">Type of Location</label>
+          <select id="type" required>
+            <option value="">Select one</option>
+            <option>Hospital</option>
+            <option>Gym</option>
+            <option>Corporate Office</option>
+            <option>Retail Store</option>
+            <option>Other</option>
+          </select>
+
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your location and vending requirements." required></textarea>
+
+          <button type="submit" class="btn btn-primary">Send Enquiry</button>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>N B and G Trading Solutions</strong></p>
+      <p>Vending solutions for businesses, organisations and high-traffic locations.</p>
+      <p style="margin-top:8px;">&copy; <span id="year"></span> N B and G Trading Solutions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("open");
+    }
+
+    function sendEnquiry(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const business = document.getElementById("business").value;
+      const location = document.getElementById("location").value;
+      const type = document.getElementById("type").value;
+      const message = document.getElementById("message").value;
+
+      /*
+        Replace YOUR_EMAIL@example.com with your real business email.
+        The form will then open the visitor's email application.
+      */
+      const email = "YOUR_EMAIL@example.com";
+      const subject = encodeURIComponent("Vending Machine Enquiry - " + business);
+      const body = encodeURIComponent(
+        "Name: " + name + "\\n" +
+        "Business / Organisation: " + business + "\\n" +
+        "Location: " + location + "\\n" +
+        "Location Type: " + type + "\\n\\n" +
+        "Message:\\n" + message
+      );
+
+      window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
